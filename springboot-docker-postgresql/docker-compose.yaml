@@ -1,0 +1,20 @@
+version: "2.2"
+
+services:
+
+  world-api:
+    image: world-rest-api
+    networks:
+      - world-network
+    ports:
+      - 80:8080
+    depends_on:
+      - world-database
+
+  world-database:
+    image: ghusta/postgres-world-db:2.3
+    networks:
+      - world-network
+
+networks:
+  world-network:
